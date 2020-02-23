@@ -43,7 +43,7 @@ check: qtest
 	./$< -v 3 -f traces/trace-15-perf.cmd
 
 test: qtest scripts/driver.py
-	scripts/driver.py
+	scripts/driver.py -c
 
 valgrind_existence:
 	@which valgrind 2>&1 > /dev/null || (echo "FATAL: valgrind not found"; exit 1)
