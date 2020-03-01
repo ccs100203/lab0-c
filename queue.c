@@ -226,7 +226,7 @@ list_ele_t *mergeSortList(list_ele_t *head)
     list_ele_t *fast = head->next;
     list_ele_t *slow = head;
 
-    // split list
+    // split list, find the middle of list
     while (fast && fast->next) {
         slow = slow->next;
         fast = fast->next->next;
