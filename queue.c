@@ -183,38 +183,29 @@ void q_reverse(queue_t *q)
 
 list_ele_t *merge(list_ele_t *l1, list_ele_t *l2)
 {
-    list_ele_t *temp = NULL, *q = NULL;
-    // init the nodes
-    if (strnatcmp(l1->value, l2->value) < 0) {
-        q = l1;
-        temp = l1;
-        l1 = l1->next;
-    } else {
-        q = l2;
-        temp = l2;
-        l2 = l2->next;
-    }
+    list_ele_t *head = NULL;
+    list_ele_t **tmp = &head;
 
     // sort and connect two list
+    // don't move head, use tmp traverse all
     while (l1 && l2) {
         if (strnatcmp(l1->value, l2->value) < 0) {
-            temp->next = l1;
-            temp = temp->next;
+            *tmp = l1;
             l1 = l1->next;
         } else {
-            temp->next = l2;
-            temp = temp->next;
+            *tmp = l2;
             l2 = l2->next;
         }
+        tmp = &((*tmp)->next);
     }
 
     // connect remaining node
     if (l1)
-        temp->next = l1;
+        *tmp = l1;
     if (l2)
-        temp->next = l2;
+        *tmp = l2;
 
-    return q;
+    return head;
 }
 
 list_ele_t *mergeSortList(list_ele_t *head)
