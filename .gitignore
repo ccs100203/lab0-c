@@ -6,3 +6,4 @@ qtest
 .devcontainer
 massif.out.*
 core*
+.cmd_history
